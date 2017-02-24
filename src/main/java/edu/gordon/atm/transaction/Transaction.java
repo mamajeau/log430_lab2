@@ -5,6 +5,7 @@ package edu.gordon.atm.transaction;
 
 import edu.gordon.atm.banking.AccountInformation;
 import edu.gordon.atm.banking.Balances;
+import com.google.common.eventbus.EventBus;
 
 /**
  * Abstract base class for classes representing the various kinds of transaction
@@ -82,6 +83,15 @@ public abstract class Transaction {
    */
   public static final int ASKING_DO_ANOTHER_STATE = 6;
 
+  public void initEventBus()
+  {
+      EventBus eventBus = new EventBus();
+
+		eventBus.register(new DepositComponent());
+		//eventBus.register(new WithdrawComponent());
+  }
+  
+  
   /**
    * Create a transaction of an appropriate type by asking the customer what
    * type of transaction is desired and then returning a newly-created member of
@@ -166,6 +176,8 @@ public abstract class Transaction {
     this.pin = pin;
     this.serialNumber = nextSerialNumber++;
     this.balances = new Balances();
+    initEventBus();
+            
   }
 
   /**
