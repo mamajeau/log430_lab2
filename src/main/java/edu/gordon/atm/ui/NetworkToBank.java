@@ -46,7 +46,7 @@ public class NetworkToBank implements INetworkToBank {
   }
 
   @Override
-  public Status sendMessage(Message message, Transaction currTransact) {
+  public void sendMessage(Message message, Transaction currTransact) {
     throw new UnsupportedOperationException(
         "This feature is currently not supported because it required to communicate "
             + "with the physical ATM which we do not have yet");

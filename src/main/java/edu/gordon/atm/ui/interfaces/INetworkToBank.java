@@ -29,5 +29,5 @@ public interface INetworkToBank {
    *          (out) balances in customer's account as reported by bank
    * @return status code returned by bank
    */
-  public Status sendMessage(Message message, Transaction currentTransaction);
+  public void sendMessage(Message message, Transaction currentTransaction);
 }
